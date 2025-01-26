@@ -156,6 +156,55 @@
         border-bottom-color: var(--red);
         border-left-color: transparent;
       }
+      #print-btn {
+        background-color: #822123; /* Main color */
+        border: none; /* Remove borders */
+        color: white; /* White text */
+        text-align: center; /* Center text */
+        text-decoration: none; /* Remove underline */
+        display: inline-block; /* Make it inline */
+        font-size: 16px; /* Font size */
+        font-weight: bold; /* Bold text */
+        border-radius: 8px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    }
+    
+    #print-btn:hover {
+        background-color: #6b1a1c; /* Darker shade of main color on hover */
+        transform: scale(1.05); /* Slightly enlarge on hover */
+    }
+    
+    #print-btn:active {
+        background-color: #541416; /* Even darker shade on click */
+        transform: scale(0.95); /* Slightly shrink on click */
+    }
+    
+    #print-btn:focus {
+        outline: none; /* Remove default focus outline */
+        box-shadow: 0 0 0 3px rgba(130, 33, 35, 0.5); /* Custom focus outline using main color */
+    }
+      @media print {
+          @page {
+            size: A4; /* Set paper size to A4 */
+            margin: 0; /* Remove margins */
+        }
+    
+        body {
+            margin: 0 !important; /* Ensure no extra margin is added by the body */
+            padding: 0 !important; /* Ensure no extra padding is added by the body */
+        }
+
+    
+        /* Optional: Hide unnecessary elements when printing */
+        .no-print {
+            display: none;
+        }
+        #print-btn {
+          height: 0;
+          display: none;
+        }
+      }
     </style>
   </head>
   <body>
@@ -184,7 +233,7 @@
 
         <h1 class="text-3xl text-center text-red">CAMBRIDGE COLLEGE</h1>
         <div class="flex justify-center">
-          <img style="width: 100%; height: 150px" src="./logo.svg" alt="logo" />
+          <img style="width: 100%; height: 150px" src="./CAMBRIDGE COLLEGE certificate - Mohamed Mahdawy_files/logo1.svg" alt="logo" />
         </div>
         <div class="flex flex-col items-center">
           <p class="text-xl">Cambridge For Postgraduate</p>
@@ -208,17 +257,17 @@
         <div class="flex w-full justify-between items-end pb-4 mb-4">
           <img
             style="height: 100px; width: auto"
-            src="./Cambridge College Certificate QR Code.png"
+            src="./CAMBRIDGE COLLEGE certificate - Mohamed Mahdawy_files/qrcode_1737438066.png"
             alt=""
           />
           <img
             style="height: 160px; width: auto"
-            src="./Cambridge College Rubber Stamp.svg"
+            src="./CAMBRIDGE COLLEGE certificate - Mohamed Mahdawy_files/Rubber_stamp1.svg"
             alt=""
           />
           <div>
             <img
-              src="./Cambridge College Certificate Rubber Stamp.png"
+              src="./CAMBRIDGE COLLEGE certificate - Mohamed Mahdawy_files/Rubber_stamp2.png"
               alt=""
             />
             <p style="border-top: 1px solid #000" class="p-2 text-center">
