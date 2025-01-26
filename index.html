@@ -199,6 +199,9 @@
         body {
           margin: 0 !important; /* Ensure no extra margin is added by the body */
           padding: 0 !important; /* Ensure no extra padding is added by the body */
+          width: 210mm; /* Set width to A4 width */
+          height: 297mm; /* Set height to A4 height */
+          overflow: hidden; /* Prevent content from overflowing */
         }
 
         /* Optional: Hide unnecessary elements when printing */
@@ -208,6 +211,10 @@
         #print-btn {
           height: 0;
           display: none;
+        }
+
+        .stamps {
+          flex-direction: row !important;
         }
       }
       @media (max-width: 768px) {
@@ -231,6 +238,8 @@
     </style>
   </head>
   <body>
+    <button id="print-btn" class="p-4">print as pdf</button>
+
     <div class="cert border w-1/2 h-full p-4">
       <div
         class="relative border p-4 relative h-full border-2 flex flex-col gap-4 text-center"
@@ -277,14 +286,14 @@
           <p class="text-base">This result was approved on 15/10/2024</p>
         </div>
 
-        <div class="stamps w-full pb-4 mb-4 ">
+        <div class="stamps w-full pb-4 mb-4">
           <img
             style="height: 100px; width: auto"
             src="./CAMBRIDGE COLLEGE certificate - Mohamed Mahdawy_files/qrcode_1737438066.png"
             alt=""
           />
           <img
-            style="height: 160px; width: auto"
+            style="height: 140px; width: auto"
             src="./CAMBRIDGE COLLEGE certificate - Mohamed Mahdawy_files/Rubber_stamp1.svg"
             alt=""
           />
@@ -300,7 +309,6 @@
         </div>
       </div>
     </div>
-    <button id="print-btn" class="p-4">print as pdf</button>
   </body>
 
   <script>
