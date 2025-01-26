@@ -195,13 +195,12 @@
           size: A4; /* Set paper size to A4 */
           margin: 0; /* Remove margins */
         }
-
+        .cert {
+          height: 100vh;
+        }
         body {
           margin: 0 !important; /* Ensure no extra margin is added by the body */
           padding: 0 !important; /* Ensure no extra padding is added by the body */
-          width: 210mm; /* Set width to A4 width */
-          height: 297mm; /* Set height to A4 height */
-          overflow: hidden; /* Prevent content from overflowing */
         }
 
         /* Optional: Hide unnecessary elements when printing */
@@ -212,9 +211,9 @@
           height: 0;
           display: none;
         }
-
         .stamps {
           flex-direction: row !important;
+          height: 100%;
         }
       }
       @media (max-width: 768px) {
@@ -238,7 +237,6 @@
     </style>
   </head>
   <body>
-    <button id="print-btn" class="p-4">print as pdf</button>
 
     <div class="cert border w-1/2 h-full p-4">
       <div
@@ -309,6 +307,8 @@
         </div>
       </div>
     </div>
+    <button id="print-btn" class="p-4">print as pdf</button>
+
   </body>
 
   <script>
