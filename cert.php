@@ -207,7 +207,9 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
           size: A4; /* Set paper size to A4 */
           margin: 0; /* Remove margins */
         }
-
+        .cert {
+          height: 100vh;
+        }
         body {
           margin: 0 !important; /* Ensure no extra margin is added by the body */
           padding: 0 !important; /* Ensure no extra padding is added by the body */
@@ -220,6 +222,10 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
         #print-btn {
           height: 0;
           display: none;
+        }
+        .stamps {
+          flex-direction: row !important;
+          height: 100%;
         }
       }
       @media (max-width: 768px) {
@@ -243,7 +249,7 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
     </style>
 </head>
 <body>
-    <div class="cert border w-1/2 h-full p-4">
+  <div class="cert border w-1/2 h-full p-4">
       <div
         class="relative border p-4 relative h-full border-2 flex flex-col gap-4 text-center"
       >
@@ -289,21 +295,21 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
           <p class="text-base">This result was approved on <?php echo esc_html($certificate_date) ?></p>
         </div>
 
-        <div class="stamps w-full pb-4 mb-4 ">
+        <div class="stamps w-full pb-4 mb-4">
           <img
             style="height: 100px; width: auto"
             src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>"
             alt=""
           />
           <img
-            style="height: 160px; width: auto"
+            style="height: 140px; width: auto"
             src="<?php echo plugin_dir_url(__FILE__); ?>../assets/img/ketm/Rubber_stamp1.svg"
             alt=""
           />
           <div>
             <img
-              src="<?php echo plugin_dir_url(__FILE__); ?>../assets/img/ketm/Rubber_stamp2.png"
-              alt=""
+            src="<?php echo plugin_dir_url(__FILE__); ?>../assets/img/ketm/Rubber_stamp2.png"
+            alt=""
             />
             <p style="border-top: 1px solid #000" class="p-2 text-center">
               Registrar
@@ -313,8 +319,7 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
       </div>
     </div>
     <button id="print-btn" class="p-4">print as pdf</button>
-  </body>
-  <script>
+    <script>
     // Disable right-click, text selection, and keyboard shortcuts
     document.addEventListener('contextmenu', function (e) {
       e.preventDefault();
@@ -334,4 +339,6 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
       window.print(); // Trigger the browser's print dialog
     });
   </script>
+  </body>
+
 </html>
