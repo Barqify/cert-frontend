@@ -119,7 +119,7 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
         font-weight: 500;
       }
       .text-base {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-weight: 500;
       }
       .text-center {
@@ -127,6 +127,9 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
       }
       .text-red {
         color: var(--red);
+      }
+      .font-bold {
+        font-weight: 700;
       }
       .triangle-top-left,
       .triangle-top-right,
@@ -285,7 +288,7 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
         <div class="flex flex-col items-center">
           <p class="text-xl">Cambridge For Postgraduate</p>
           <p class="text-xl">Researches Diploma</p>
-          <p class="text-xl text-red">In <?php echo esc_html($course_name) ?></p>
+          <p class="text-xl text-red font-bold">In <?php echo esc_html($course_name) ?></p>
           <p class="text-xl">Granted to</p>
           <p class="text-2xl text-red"><?php echo esc_html($student_name) ?></p>
           <p class="text-base text-center">
@@ -316,6 +319,8 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
             <img
             src="<?php echo plugin_dir_url(__FILE__); ?>../assets/img/ketm/Rubber_stamp2.png"
             alt=""
+            style="height:50px; width:auto"
+
             />
             <p style="border-top: 1px solid #000" class="p-2 text-center">
               Registrar
