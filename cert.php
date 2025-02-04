@@ -289,8 +289,8 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
           <p class="text-xl">Granted to</p>
           <p class="text-2xl text-red"><?php echo esc_html($student_name) ?></p>
           <p class="text-base text-center">
-            This is to certify that the above mentioned has Successfully
-            achieved The training diploma professional With all the rights and
+            This is to certify that the above mentioned has Successfully<br>
+            achieved The training diploma professional With all the rights<br> and
             the privileges of the certificate.
           </p>
           <p class="text-base p-4">
