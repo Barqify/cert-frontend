@@ -36,6 +36,12 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
         min-height: 100vh;
         padding: 1rem;
       }
+      .cert {
+        padding: 24px;
+      }
+      .head-text {
+        margin-bottom: 4rem;
+      }
       .w-1\/2 {
         max-width: 800px;
         width: 100%;
@@ -272,7 +278,7 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
         <div class="absolute triangle-bottom-left"></div>
         <div class="absolute triangle-bottom-right"></div>
 
-        <h1 class="text-3xl text-center text-red">CAMBRIDGE COLLEGE</h1>
+        <h1 class="text-3xl text-center text-red head-text">CAMBRIDGE COLLEGE</h1>
         <div class="flex justify-center">
           <img style="width: 100%; height: 150px" src="<?php echo plugin_dir_url(__FILE__); ?>../assets/img/ketm/logo1.svg" alt="logo" />
         </div>
