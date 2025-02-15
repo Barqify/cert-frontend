@@ -355,7 +355,7 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
         </div>
       </div>
     </div>
-    <button id="print-btn" class="p-4">print as pdf</button>
+    <button id="print-btn" class="p-4">download as pdf</button>
     <script>
     // Disable right-click, text selection, and keyboard shortcuts
     document.addEventListener('contextmenu', function (e) {
