@@ -15,6 +15,8 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <title>CAMBRIDGE COLLEGE certificate - <?php echo esc_html($student_name) ?></title>
   <style>
       @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
@@ -118,6 +120,9 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
         font-size: 1.7rem;
         font-weight: 500;
       }
+      .font-bold {
+        font-weight: 700;
+      }
       .text-base {
         font-size: 1.4rem;
         font-weight: 500;
@@ -130,6 +135,27 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
       }
       .font-bold {
         font-weight: 700;
+      }
+      .desktop-view {
+        width: 800px !important;
+        font-size: 1rem !important;
+      }
+
+      .desktop-view .stamps {
+        flex-direction: row !important;
+        align-items: end !important;
+      }
+
+      .desktop-view .text-3xl {
+        font-size: 2.5rem !important;
+      }
+
+      .desktop-view .text-2xl {
+        font-size: 2rem !important;
+      }
+
+      .desktop-view .text-xl {
+        font-size: 1.7rem !important;
       }
       .triangle-top-left,
       .triangle-top-right,
@@ -258,7 +284,7 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
     </style>
 </head>
 <body>
-  <div class="cert border w-1/2 h-full p-4">
+  <div  id="certificate"  class="cert border w-1/2 h-full p-4">
       <div
         class="relative border p-4 relative h-full border-2 flex flex-col gap-4 text-center"
       >
@@ -273,7 +299,7 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
             z-index: -1;
             opacity: 10%;
           "
-          src="<?php echo plugin_dir_url(__FILE__); ?>../assets/img/ketm/Rubber_stamp1.svg"
+          src="<?php echo plugin_dir_url(__FILE__); ?>../assets/img/ketm/stamp.png"
           alt=""
         />
         <div class="absolute triangle-top-left"></div>
@@ -283,7 +309,7 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
 
         <h1 class="text-3xl text-center text-red head-text">CAMBRIDGE COLLEGE</h1>
         <div class="flex justify-center">
-          <img style="width: 100%; height: 150px" src="<?php echo plugin_dir_url(__FILE__); ?>../assets/img/ketm/logo1.svg" alt="logo" />
+          <img style="width: 100%; height: 150px" src="<?php echo plugin_dir_url(__FILE__); ?>../assets/img/ketm/logo.png" alt="logo" />
         </div>
         <div class="flex flex-col items-center">
           <p class="text-xl">Cambridge For Postgraduate</p>
@@ -312,12 +338,12 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
           />
           <img
             style="height: 140px; width: auto"
-            src="<?php echo plugin_dir_url(__FILE__); ?>../assets/img/ketm/Rubber_stamp1.svg"
+            src="<?php echo plugin_dir_url(__FILE__); ?>../assets/img/ketm/stamp.png"
             alt=""
           />
           <div>
             <img
-            src="<?php echo plugin_dir_url(__FILE__); ?>../assets/img/ketm/Rubber_stamp2.png"
+            src="<?php echo plugin_dir_url(__FILE__); ?>../assets/img/ketm/emda.png"
             alt=""
             style="height:50px; width:auto"
 
@@ -346,8 +372,31 @@ $certificate_date = get_post_meta($post_id, '_certificate_date', true);
 
 
     // Print as PDF functionality
-    document.getElementById('print-btn').addEventListener('click', function () {
-      window.print(); // Trigger the browser's print dialog
+    document.getElementById("print-btn").addEventListener("click", () => {
+      const { jsPDF } = window.jspdf;
+      const certificate = document.getElementById("certificate");
+      certificate.classList.add("desktop-view");
+
+      const certWidth = certificate.offsetWidth;
+      const certHeight = certificate.offsetHeight;
+
+      html2canvas(certificate, { scale: 2 }).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+
+        const pdfWidth = certWidth * 0.264583;
+        const pdfHeight = certHeight * 0.264583;
+
+        const pdf = new jsPDF({
+          orientation: pdfWidth > pdfHeight ? "landscape" : "portrait",
+          unit: "mm",
+          format: [pdfWidth, pdfHeight],
+        });
+
+        pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+        pdf.save("certificate.pdf");
+
+        certificate.classList.remove("desktop-view");
+      });
     });
   </script>
   </body>
